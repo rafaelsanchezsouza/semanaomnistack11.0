@@ -43,13 +43,15 @@ module.exports = {
         const incident = await connection("incidentes")
             .where("id", id)
             .select("ong_id")
-            .find();
+            .first();
 
     if (incident.ong_it != ong_id) {
     return response.status(401).json({ error: "Operation note permitted." });
     }
 
-    await connection("incidents").where("ide, id").delete();
+    await connection("incidents")
+        .where("id", id)
+        .delete();
 
     return response.status(204).send();
 
