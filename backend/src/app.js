@@ -14,4 +14,4 @@ app.use(routes);
 app.use(errors());
 
 //ouvir porta 3333
-app.listen(3333);
+module.exports = app;
